@@ -1,7 +1,8 @@
 const log = console.log
 log("finally really");
 log("Hello ME and You!")
-let player =getPlayerchoice();
+let player;
+let computer;
 function getPlayerchoice(){
     let playerChoice;
     while (playerChoice != "Rock" && playerChoice !="Paper" && playerChoice !="Scissors" ){
@@ -10,8 +11,7 @@ function getPlayerchoice(){
     }
     return playerChoice
 }
-log(player);
-let computer = getComputerChoice();
+// log(player);
 // i did if statement first but found it too big and remember that switch exist 
 function getComputerChoice(){
    let choice = Math.floor(Math.random()*3);
@@ -29,8 +29,37 @@ function getComputerChoice(){
 };
 // i'm not really sure if this is correct i know there could be a way 
 // to do computer=[] and choose something from it
-log(computer);
-log(Math.random());
-let test =[1,2,3];
-// i want a function that choose 1 of the 3 hmmm
-// log(test.random()); nice try dumbas lol
+// log(computer);
+function RpsGame(player,computer){
+    let round = 0;
+    let playercount=0;
+    let computercount=0;
+    while (playercount <3 && computercount <3){
+        round++;
+        log("Round"+round);
+        let player = getPlayerchoice();
+        let computer =getComputerChoice();
+        if(player == computer){
+            log("computer chooses "+ computer+", you choose "+ player)
+            log("Draw");
+        }else if(player =="Rock" && computer == "Scissors" ||
+                player =="Paper" && computer == "Rock"  ||
+                player =="Scissors" && computer == "Paper"){
+                playercount++;
+                log("computer chooses "+ computer+", you choose "+ player)
+                log("you win");
+                log("round won by player = "+ playercount)
+        }else{
+            computercount++;
+            log("computer chooses "+ computer+", you choose "+ player)
+            log("computer wins");
+            log("rounds won by computer = "+ computercount)
+        }
+    }
+    if(playercount> computercount){
+        return ("player wins "+ playercount+" to " + computercount);
+    }else{
+        return ("Computer wins "+ computercount+" to " + playercount);
+    }
+}
+log(RpsGame(player,computer));
