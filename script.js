@@ -1,5 +1,5 @@
 const log = console.log
-log("Hello type log(RpgGame()); to play rock,paper,scissors");
+log("Hello type log(RpsGame()); to play rock,paper,scissors");
 function getPlayerchoice(){
     let playerChoice;
     while (playerChoice != "rock" && playerChoice !="paper" && playerChoice !="scissors" ){
