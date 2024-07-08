@@ -1,35 +1,31 @@
 const log = console.log
-log("finally really");
-log("Hello ME and You!")
-let player;
-let computer;
+log("Hello type log(RpgGame()); to play rock,paper,scissors");
 function getPlayerchoice(){
     let playerChoice;
-    while (playerChoice != "Rock" && playerChoice !="Paper" && playerChoice !="Scissors" ){
-        playerChoice = prompt(`choose between Rock,Paper,Scissors: `,"");
-        // i spent like an hour trying || and not understanding why it was a infinite loop XD
+    while (playerChoice != "rock" && playerChoice !="paper" && playerChoice !="scissors" ){
+        playerChoice = prompt(`choose between rock,paper and scissors: `,"what will it be ?").toLowerCase();
+        // i spent like an hour trying || and understanding why it was a infinite loop XD
     }
     return playerChoice
 }
-// log(player);
+
 // i did if statement first but found it too big and remember that switch exist 
 function getComputerChoice(){
    let choice = Math.floor(Math.random()*3);
     switch(choice) {
         case 0: 
-            choice ="Rock";
+            choice ="rock";
             break;
         case 1:
-            choice ="Paper";
+            choice ="paper";
             break;
         case 2:
-            choice ="Scissors";
+            choice ="scissors";
             break;
     }return choice;
 };
 // i'm not really sure if this is correct i know there could be a way 
 // to do computer=[] and choose something from it
-// log(computer);
 function RpsGame(player,computer){
     let round = 0;
     let playercount=0;
@@ -42,9 +38,9 @@ function RpsGame(player,computer){
         if(player == computer){
             log("computer chooses "+ computer+", you choose "+ player)
             log("Draw");
-        }else if(player =="Rock" && computer == "Scissors" ||
-                player =="Paper" && computer == "Rock"  ||
-                player =="Scissors" && computer == "Paper"){
+        }else if(player =="rock" && computer == "scissors" ||
+                player =="paper" && computer == "rock"  ||
+                player =="scissors" && computer == "paper"){
                 playercount++;
                 log("computer chooses "+ computer+", you choose "+ player)
                 log("you win");
@@ -62,4 +58,4 @@ function RpsGame(player,computer){
         return ("Computer wins "+ computercount+" to " + playercount);
     }
 }
-log(RpsGame(player,computer));
+// log(RpsGame(player,computer));
