@@ -1,6 +1,6 @@
 const log = console.log
-log("Hello type log(RpsGame()); to play rock,paper,scissors");
-function getPlayerchoice(){
+log("Hello type log(rpsGame()); to play rock,paper,scissors");
+function getPlayerChoice(){
     let playerChoice;
     while (playerChoice != "rock" && playerChoice !="paper" && playerChoice !="scissors" ){
         playerChoice = prompt(`choose between rock,paper and scissors: `,"what will it be ?").toLowerCase();
@@ -26,14 +26,14 @@ function getComputerChoice(){
 };
 // i'm not really sure if this is correct i know there could be a way 
 // to do computer=[] and choose something from it
-function RpsGame(player,computer){
+function rpsGame(player,computer){
     let round = 0;
     let playercount=0;
     let computercount=0;
     while (playercount <3 && computercount <3){
         round++;
         log("Round"+round);
-        let player = getPlayerchoice();
+        let player = getPlayerChoice();
         let computer =getComputerChoice();
         if(player == computer){
             log("computer chooses "+ computer+", you choose "+ player)
@@ -58,4 +58,4 @@ function RpsGame(player,computer){
         return ("Computer wins "+ computercount+" to " + playercount);
     }
 }
-// log(RpsGame(player,computer));
+// log(rpsGame(player,computer));
