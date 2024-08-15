@@ -26,11 +26,12 @@ function getComputerChoice(){
 };
 // i'm not really sure if this is correct i know there could be a way 
 // to do computer=[] and choose something from it
-function rpsGame(player,computer){
+function rpsGame(){
     let round = 0;
     let playercount=0;
     let computercount=0;
-    while (playercount <3 && computercount <3){
+    // while (playercount <3 && computercount <3){ 
+    // by removing condition,only 1 oundis played
         round++;
         log("Round"+round);
         let player = getPlayerChoice();
@@ -38,6 +39,7 @@ function rpsGame(player,computer){
         if(player == computer){
             log("computer chooses "+ computer+", you choose "+ player)
             log("Draw");
+            log("");
         }else if(player =="rock" && computer == "scissors" ||
                 player =="paper" && computer == "rock"  ||
                 player =="scissors" && computer == "paper"){
@@ -45,17 +47,19 @@ function rpsGame(player,computer){
                 log("computer chooses "+ computer+", you choose "+ player)
                 log("you win");
                 log("round won by player = "+ playercount)
+                log("");
         }else{
             computercount++;
             log("computer chooses "+ computer+", you choose "+ player)
             log("computer wins");
             log("rounds won by computer = "+ computercount)
+            log("");
+        }
+    // }
+        if(playercount> computercount){
+            return ("player wins "+ playercount+" to " + computercount);
+        }else{
+            return ("Computer wins "+ computercount+" to " + playercount);
         }
     }
-    if(playercount> computercount){
-        return ("player wins "+ playercount+" to " + computercount);
-    }else{
-        return ("Computer wins "+ computercount+" to " + playercount);
-    }
-}
 // log(rpsGame(player,computer));
