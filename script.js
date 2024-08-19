@@ -1,5 +1,7 @@
 const log = console.log;
-
+let playerScor= 0;
+let computerScor= 0;
+let round = 0;
 
 
 
@@ -19,31 +21,34 @@ function getComputerChoice(){
 };
 
 function singleRound(humanChoice){
-    let playerScor=0;
-    let computerScor=0;
-    let round = 0;
+    if(playerScor >1){
+        let pTime= "times"
+    }else{pTime ="time"};
+    if(computerScor >1){
+        let cTime= "times"
+    }else{cTime ="time"};
     round++;
-    log("Round"+round);
+    pRound =`round ${round}`;
     let player = humanChoice;
     let computer =getComputerChoice();
     if(player == computer){
-        log("computer chooses "+ computer+", you choose "+ player)
-        log("Draw");
-        log("");
-    }else if(player =="rock" && computer == "scissors" ||
+        pChoicesMade.textContent =`computer chooses ${computer}, player chooses ${player}`;
+        pRoundWinner.textContent =`it's a DRAW!`;
+
+    }else if(
+            player =="rock" && computer == "scissors" ||
             player =="paper" && computer == "rock"  ||
             player =="scissors" && computer == "paper"){
             playerScor++;
-            log("computer chooses "+ computer+", you choose "+ player)
-            log("you win");
-            log("round won by player = "+ playerScor)
-            log("");
+            pChoicesMade.textContent =`computer chooses ${computer}, player chooses ${player}`;
+            pRoundWinner.textContent =`player wins this round!`;
+            pRoundWon.textContent = `player wins ${playerScor} ${pTime},computer wins ${computerScor} ${cTime}`;
     }else{
+
         computerScor++;
-        log("computer chooses "+ computer+", you choose "+ player)
-        log("computer wins");
-        log("rounds won by computer = "+ computerScor)
-        log("");
+        pChoicesMade.textContent =`computer chooses ${computer}, player chooses ${player}`;
+        pRoundWinner.textContent = `computer wins this round!`;
+        pRoundWon.textContent = `player wins ${playerScor} ${pTime},computer wins ${computerScor} ${cTime}`;
     }
     }
 
@@ -78,8 +83,15 @@ if(playerScor> computerScor){
     return ("Computer wins "+ computerScor+" to " + playerScor);
 } */
 
-/* let playGame =document.querySelector("#rps");
- playGame.addEventListener("click",rpsGame); */
+ let reset =document.querySelector("#reset");
+ reset.addEventListener("click",()=>{
+    computerScor = 0;
+    playerScor = 0;
+    round = 0;
+    pChoicesMade.textContent =``;
+    pRoundWinner.textContent =``;
+    pRoundWon.textContent = ``;
+ }); 
 
 const btnRock =document.querySelector("#rock");
 btnRock.addEventListener("click",function(){
@@ -98,3 +110,14 @@ btnScissors.addEventListener("click",function(){
     let choice="scissors";
     singleRound(choice)
 });
+
+let pRound = document.querySelector("#round");
+
+
+let pChoicesMade = document.querySelector("#choicesMade");
+
+
+let pRoundWinner = document.querySelector("#roundWinner");
+
+
+let pRoundWon = document.querySelector("#roundWon");
